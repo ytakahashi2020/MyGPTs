@@ -7,11 +7,11 @@
   },
   "servers": [
     {
-      "url": "https://gnews.io/api/v4"
+      "url": "https://gnews.io"
     }
   ],
   "paths": {
-    "/search": {
+    "/api/v4/search": {
       "get": {
         "description": "Get global news",
         "operationId": "GetGlobalNews",
@@ -69,7 +69,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/NewsResponse"
+                  "$ref": "#/components/schemas/AddressResponse"
                 }
               }
             }
@@ -80,7 +80,7 @@
   },
   "components": {
     "schemas": {
-      "NewsResponse": {
+      "AddressResponse": {
         "type": "object",
         "properties": {
           "totalArticles": {

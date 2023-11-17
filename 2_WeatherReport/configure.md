@@ -15,6 +15,8 @@ https://weather.tsukumijima.net/primary_area.xml
 
 ## Conversation starters
 
+那覇市の天気を教えてください。
+
 ## Knowledge
 
 ## Capabilities
