@@ -1,0 +1,77 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Postal Code to Address",
+    "description": "Retrieve address based on postal code using Zipcloud API",
+    "version": "v1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://zipcloud.ibsnet.co.jp"
+    }
+  ],
+  "paths": {
+    "/api/search": {
+      "get": {
+        "description": "Get address by postal code",
+        "operationId": "GetAddressByPostalCode",
+        "parameters": [
+          {
+            "name": "zipcode",
+            "in": "query",
+            "description": "Postal code to search for",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AddressResponse": {
+        "type": "object",
+        "properties": {
+          "address1": {
+            "type": "string",
+            "description": "Prefecture"
+          },
+          "address2": {
+            "type": "string",
+            "description": "City"
+          },
+          "address3": {
+            "type": "string",
+            "description": "Town"
+          },
+          "kana1": {
+            "type": "string",
+            "description": "Prefecture in Kana"
+          },
+          "kana2": {
+            "type": "string",
+            "description": "City in Kana"
+          },
+          "kana3": {
+            "type": "string",
+            "description": "Town in Kana"
+          }
+        }
+      }
+    }
+  }
+}

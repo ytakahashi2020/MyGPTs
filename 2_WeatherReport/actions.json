@@ -1,0 +1,109 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Weather Forecast API",
+    "description": "Retrieve weather forecast information using Tsukumijima Weather API",
+    "version": "v1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://weather.tsukumijima.net"
+    }
+  ],
+  "paths": {
+    "/api/forecast/city/{cityCode}": {
+      "get": {
+        "description": "Get weather forecast by city code",
+        "operationId": "GetWeatherByCityCode",
+        "parameters": [
+          {
+            "name": "cityCode",
+            "in": "path",
+            "description": "City code to search for weather forecast",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WeatherResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "WeatherResponse": {
+        "type": "object",
+        "properties": {
+          "location": {
+            "type": "object",
+            "properties": {
+              "area": {
+                "type": "string",
+                "description": "Area name"
+              },
+              "prefecture": {
+                "type": "string",
+                "description": "Prefecture name"
+              },
+              "city": {
+                "type": "string",
+                "description": "City name"
+              }
+            }
+          },
+          "forecasts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "date": {
+                  "type": "string",
+                  "description": "Date of forecast"
+                },
+                "telop": {
+                  "type": "string",
+                  "description": "Weather condition"
+                },
+                "temperature": {
+                  "type": "object",
+                  "properties": {
+                    "min": {
+                      "type": "object",
+                      "properties": {
+                        "celsius": {
+                          "type": "string",
+                          "description": "Minimum temperature in Celsius"
+                        }
+                      }
+                    },
+                    "max": {
+                      "type": "object",
+                      "properties": {
+                        "celsius": {
+                          "type": "string",
+                          "description": "Maximum temperature in Celsius"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
